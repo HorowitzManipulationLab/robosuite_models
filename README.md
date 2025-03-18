@@ -56,6 +56,18 @@ To load a robot model to see what it looks like, you can use the following comma
 python examples/load_compositional_robot_example.py --robots UR5eOmron  --controller BASIC
 ```
 
-## Contributing
+## Indy7 implementation Example
 
-Run `pre-commit run --all-files` before open a pull request.
+```sh
+python examples/env_test.py
+```
+
+## Original Github Repo
+https://github.com/ARISE-Initiative/robosuite_models
+
+## Usage
+```
+git clone [This repo]
+cd robosuite_model 
+pip install -e .
+'''
