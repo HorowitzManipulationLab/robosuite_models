@@ -15,38 +15,7 @@ from robosuite.controllers import load_composite_controller_config
 from robosuite.models.robots import *
 from robosuite.robots import register_robot_class
 
-
-@register_robot_class("WheeledRobot")
-class UR5eOmron(UR5e):
-    """
-    Variant of Panda robot with mobile base. Currently serves as placeholder class.
-    """
-
-    @property
-    def default_base(self):
-        return "OmronMobileBase"
-
-    @property
-    def default_arms(self):
-        return {"right": "UR5e"}
-
-
-@register_robot_class("LeggedRobot")
-class GR1SchunkSVHFloatingBody(GR1FloatingBody):
-    """
-    Variant of Panda robot with mobile base. Currently serves as placeholder class.
-    """
-
-    @property
-    def default_gripper(self):
-        """
-        Since this is bimanual robot, returns dict with `'right'`, `'left'` keywords corresponding to their respective
-        values
-
-        Returns:
-            dict: Dictionary containing arm-specific gripper names
-        """
-        return {"right": "SchunkSvhRightHand", "left": "SchunkSvhLeftHand"}
+from robosuite_models.robots import indy7_robot
 
 
 if __name__ == "__main__":
@@ -54,13 +23,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--environment", type=str, default="Lift")
     parser.add_argument(
-        "--robots", nargs="+", type=str, default="UR5eOmron", help="Which robot(s) to use in the env"
+        "--robots", nargs="+", type=str, default="Indy7", help="Which robot(s) to use in the env"
     )
     parser.add_argument(
         "--config", type=str, default="single-arm-opposed", help="Specified environment configuration if necessary"
     )
     parser.add_argument("--arm", type=str, default="right", help="Which arm to control (eg bimanual) 'right' or 'left'")
-    parser.add_argument("--camera", type=str, default="agentview", help="Which camera to use for collecting demos")
+    parser.add_argument("--camera", type=str, default=None, help="Which camera to use for collecting demos")
     parser.add_argument(
         "--controller", type=str, default='BASIC', help="Choice of composite controller. e.g. 'BASIC', 'WHOLE_BODY_IK'"
     )
@@ -99,11 +68,27 @@ if __name__ == "__main__":
         reward_shaping=True,
         control_freq=20,
     )
+    try:
+        env.reset()
 
-    env.reset()
-    env.step(np.zeros(sum([robot.action_dim for robot in env.robots])))
+        action = np.zeros((sum([robot.action_dim for robot in env.robots])))
 
-    m = env.sim.model._model
-    d = env.sim.data._data
-    mujoco.viewer.launch(m, d)
+        print(action.shape)
+
+        action[-1] = 1
+        action[0] = 0
+        action[2] = -0.1
+
+        for i in range(1000):
+            env.step(action)
+
+            env.render()
+        # for i in range(2):
+        #     env.step(np.zeros(sum([robot.action_dim for robot in env.robots])))
+        # m = env.sim.model._model
+        # d = env.sim.data._data
+        # mujoco.viewer.launch(m, d)
+
+    except KeyboardInterrupt:
+        env.close()
     exit()

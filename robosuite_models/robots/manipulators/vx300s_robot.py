@@ -16,7 +16,7 @@ class VX300S(ManipulatorModel):
     """
 
     arms = ["right"]
-
+  
     def __init__(self, idn=0):
         super().__init__(robosuite_model_path_completion("robots/vx300s/robot.xml"), idn=idn)
 
