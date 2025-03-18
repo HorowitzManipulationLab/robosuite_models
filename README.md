@@ -68,7 +68,7 @@ https://github.com/ARISE-Initiative/robosuite_models
 ## Usage
 ```
 git clone [This repo]
-cd robosuite_model 
+cd robosuite_models 
 pip install -e .
 ```
 
