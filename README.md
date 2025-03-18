@@ -70,4 +70,9 @@ https://github.com/ARISE-Initiative/robosuite_models
 git clone [This repo]
 cd robosuite_model 
 pip install -e .
-'''
+```
+
+Import example 
+```py
+from robosuite_models.robots import indy7_robot
+```
