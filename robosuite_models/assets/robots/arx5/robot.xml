@@ -24,6 +24,9 @@
   <worldbody>
     <!--Start of base-->
     <body name="base" pos="0 0 0">
+      <!-- robot view -->
+      <camera mode="fixed" name="robotview" pos="1.0 0 0.4" quat="0.653 0.271 0.271 0.653"/>
+      <inertial diaginertia="0 0 0" mass="0" pos="0 0 0"/>
       <!--Start of hand base-->
       <body name="base_link" pos="0.0 0.0 0.0" quat="1 0 0 0">
         <inertial pos="-3.764e-5 0.00006519 0.03037877" quat="1.0 0.0 0.0 0.0" mass="0.428" diaginertia="0.00060728 0.00060832 1.917e-4"/>
