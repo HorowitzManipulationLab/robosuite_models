@@ -43,7 +43,7 @@ class Indy7(ManipulatorModel):
         return {
             "bins": (-0.5, -0.1, 0),
             "empty": (-0.6, 0, 0),
-            "table": lambda table_length: (-0.35 - table_length / 2, 0.0, 0.0),
+            "table": lambda table_length: (-0.20 - table_length / 2, 0.0, 0.0),
         }
 
     @property

@@ -31,7 +31,7 @@
                 <body name="leftfinger" pos = "-0.03 -0.0070 0.061">
                     <inertial pos="0 0 0.0" mass="0.1" diaginertia="0.01 0.01 0.005" />
                     <joint name="finger_joint1" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="-0.02 0.00" damping="100" armature="1.0" frictionloss="1.0"/>
-                    <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="finger1" name="finger1_visual" rgba="0.499 0.499 0.499 1" />
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="finger1" name="finger1_visual" rgba="0.77 0.19 0.235 1" />
                     <geom type="mesh" group="0" conaffinity="1" contype="1" solref="0.02 1" friction="1 0.005 0.0001" condim="4" mesh="finger1" name="finger1_collision"/>
                     <body name="finger_joint1_tip" pos="0.0522 0.007 0.072">
                         <inertial pos="0 0 0" quat="0 0 0 1" mass="0.01" diaginertia="0.01 0.01 0.01" />
@@ -41,7 +41,7 @@
                 <body name="rightfinger" pos="0.03 0.0070 0.061">
                     <inertial pos="0 0 0.0" mass="0.1" diaginertia="0.01 0.01 0.005" />
                     <joint name="finger_joint2" pos="0 0 0" axis="1 0 0" type="slide" limited="true" range="0.0 0.02" damping="100" armature="1.0" frictionloss="1.0"/>
-                    <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="finger2" name="finger2_visual" rgba="1.0 0.499 0.499 1" />
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" mesh="finger2" name="finger2_visual" rgba="0.77 0.19 0.235 1" />
                     <geom type="mesh" group="0" conaffinity="1" contype="1" solref="0.02 1" friction="1 0.005 0.0001" condim="4" mesh="finger2" name="finger2_collision"/>
                     <body name="finger_joint2_tip" pos="-0.0522 -0.007 0.072">
                         <inertial pos="0 0 0" quat="0 0 0 1" mass="0.01" diaginertia="0.01 0.01 0.01" />
